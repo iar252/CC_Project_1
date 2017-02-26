@@ -17,6 +17,7 @@ function draw() {
 
 
 
+
 function birds() {
     background(249, 245, 212);
     frameRate(1);
