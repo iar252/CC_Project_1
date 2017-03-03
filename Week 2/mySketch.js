@@ -11,9 +11,9 @@ function setup() {
 
 function draw() {
     ellipseMode(CENTER);
-    icecream.display(); 
-    icecream.shifting();
-    if (keyIsPressed) { // changes scene to beach when key is pressed 
+    icecream.display();
+    
+    if (keyIsPressed) { // changes scenes when key is pressed 
         birds();
         sun();
         water();
@@ -25,22 +25,20 @@ var icecream = { // the ice cream brush
     y: 6,
     display: function() {
         if (mouseIsPressed) {
+            noStroke();
             translate(mouseX, mouseY);
             fill(242, 247, 192); // mint flavor
-            ellipse(this.x, this.y, 50, 50);
-            noStroke();
-            ellipse(this.x - 30, this.y + 25, 5, 20); // big drop
-            ellipse(this.x - 30, this.y + 50, 3, 10); // small drop
-            ellipse(this.x, this.y + 62, 67, 10); // scoop
-            stroke(1);
+            ellipse(this.x, this.y, 50, 50);//scoop
+            ellipse(this.x, this.y + 62, 67, 10); // puddle
             fill(204, 166, 95); // cone 
             triangle(this.x - 26, this.y + 5, this.x, this.y + 60, this.x + 26, this.y + 5);
+            fill(242, 247, 192)
+          ellipse(this.x - 15, this.y + 50, 3, 10); // small drop
+          ellipse(this.x - 15, this.y + 12, 5, 10); // big drop
+            ellipse(this.x, this.y + 5, 65, 10);
         }
     },
-    shifting: function() { // for intense pattern in concentrated area 
-        this.x += random(-5, 5);
-        this.y += random(-5, 5);
-    }
+
 }
 
 function birds() {
@@ -85,7 +83,7 @@ function sun() {
 }
 
 function water() {
-    frameRate(1);
+    frameRate(2);
     for (var m = 0; m < 20; m++) {
         wavesBlue[m] = int(random(150, 255));
     }
